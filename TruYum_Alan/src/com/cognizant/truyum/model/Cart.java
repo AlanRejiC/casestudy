@@ -10,8 +10,8 @@ public class Cart {
 	public List<MenuItem> getMenuItemList() {
 		return menuItemList;
 	}
-	public void setMenuItemList(List<MenuItem> menuItemList) {
-		this.menuItemList = menuItemList;
+	public void setMenuItemList(List<MenuItem> menuItemList1) {
+		menuItemList = menuItemList1;
 	}
 	public double getTotal() {
 		return total;
@@ -23,9 +23,9 @@ public class Cart {
 	public String toString() {
 		return "Cart [menuItemList=" + menuItemList + ", total=" + total + "]";
 	}
-	public Cart(List<MenuItem> menuItemList, double total) {
+	public Cart(List<MenuItem> menuItemList1, double total) {
 		super();
-		this.menuItemList = menuItemList;
+		menuItemList = menuItemList1;
 		this.total = total;
 	}
 	
@@ -39,9 +39,9 @@ public class Cart {
 			return false;
 		Cart other = (Cart) obj;
 		if (menuItemList == null) {
-			if (other.menuItemList != null)
+			if (menuItemList != null)
 				return false;
-		} else if (!menuItemList.equals(other.menuItemList))
+		} else if (!menuItemList.equals(menuItemList))
 			return false;
 		if (Double.doubleToLongBits(total) != Double.doubleToLongBits(other.total))
 			return false;
