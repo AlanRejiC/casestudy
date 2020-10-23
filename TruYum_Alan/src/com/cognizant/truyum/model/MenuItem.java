@@ -62,11 +62,12 @@ public class MenuItem {
 		this.dateOfLaunch = dateOfLaunch;
 	}
 	@Override
-	public String toString() {
-		return "MenuItem [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + ", active="
-				+ active + ", freeDelivery=" + freeDelivery + ", dateOfLaunch=" + dateOfLaunch + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -76,31 +77,11 @@ public class MenuItem {
 		if (getClass() != obj.getClass())
 			return false;
 		MenuItem other = (MenuItem) obj;
-		if (active != other.active)
-			return false;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
-		if (dateOfLaunch == null) {
-			if (other.dateOfLaunch != null)
-				return false;
-		} else if (!dateOfLaunch.equals(other.dateOfLaunch))
-			return false;
-		if (freeDelivery != other.freeDelivery)
-			return false;
 		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (Float.floatToIntBits(price) != Float.floatToIntBits(other.price))
 			return false;
 		return true;
 	}
+	
 	
 	
 	

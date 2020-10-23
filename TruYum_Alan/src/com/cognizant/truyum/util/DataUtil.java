@@ -17,7 +17,14 @@ public class DataUtil {
 		}
 		catch(ParseException e)
 		{
-			e.printStackTrace();
+			DateFormat format= new SimpleDateFormat("yyyy-MM-dd");
+			try {
+			date=format.parse(dat);
+			}
+			catch(Exception m)
+			{
+				m.printStackTrace();
+			}
 		}
 		return date;
 	}

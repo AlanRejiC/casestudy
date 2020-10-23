@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.cognizant.truyum.model.MenuItem;
 
-public class CartDaoSqlImplTest {
+public class CartDaoCollectionImplTest {
 
 	public static void main(String args[])
 	{
@@ -15,9 +15,9 @@ public class CartDaoSqlImplTest {
 	
 	static void testAddCartItem()
 	{
-		CartDao cartDao=new CartDaoSqlImpl();
-		cartDao.addCartItem(1,100023);
-		//cartDao.addCartItem(1,100100);
+		CartDao cartDao=new CartDaoCollectionImpl();
+		cartDao.addCartItem(1,100123);
+		cartDao.addCartItem(1,100100);
 		List<MenuItem> mm=null;
 		try {
 		mm=cartDao.getAllCartItems(1);
@@ -33,7 +33,7 @@ public class CartDaoSqlImplTest {
 	
 	static void testGetAllCartItems()
 	{
-		CartDao cartDao=new CartDaoSqlImpl();
+		CartDao cartDao=new CartDaoCollectionImpl();
 		List<MenuItem> mm=null;
 		try {
 		mm=cartDao.getAllCartItems(1);
@@ -48,11 +48,14 @@ public class CartDaoSqlImplTest {
 	
 	static void testRemoveCartItem()
 	{
-		CartDao cartDao=new CartDaoSqlImpl();
-		cartDao.removeCartItem(1,101000);
+		CartDao cartDao=new CartDaoCollectionImpl();
+		cartDao.removeCartItem(1,100123);
+		List<MenuItem> mm=null;
 		try
 		{
-		cartDao.getAllCartItems(1);
+			mm=cartDao.getAllCartItems(1);
+			for(MenuItem mn:mm)
+			System.out.println(mn.getId()+" "+mn.getName()+" "+mn.getCategory()+" "+mn.getPrice()+" "+mn.getDateOfLaunch());
 		}
 		catch(Exception e)
 		{

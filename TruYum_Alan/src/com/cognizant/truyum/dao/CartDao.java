@@ -8,8 +8,8 @@ import com.cognizant.truyum.model.*;
 
 public interface CartDao {
 
-	void addCartItem(long userId,long MenuItemId);
-	List<MenuItem> getAllCartItems(long userId);
+	void addCartItem(long userId,long menuItemId);
+	List<MenuItem> getAllCartItems(long userId) throws CartEmptyException;
 	void removeCartItem(long userId,long menuItemId);
 	
 }

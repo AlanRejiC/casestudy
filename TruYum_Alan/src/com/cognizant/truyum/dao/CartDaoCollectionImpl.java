@@ -51,17 +51,55 @@ public class CartDaoCollectionImpl implements CartDao {
 	@Override
 	public List<MenuItem> getAllCartItems(long userId) throws CartEmptyException {
 		// TODO Auto-generated method stub
+		List<MenuItem> mi=null;
+		double tot=0;
 		for(Map.Entry<Long,Cart> mm:userCarts.entrySet())
 		{
 			if(mm.getKey()==userId)
 			{
-	
-		return null;
+				mi=mm.getValue().getMenuItemList();
+			}
+		}
+		if(mi.size()==0)
+		{
+			throw new CartEmptyException();
+		}
+		else
+		{
+			for(MenuItem menuitem:mi)
+			{
+				tot+=menuitem.getPrice();
+			}
+		}
+		userCarts.put(userId,new Cart(mi,tot));
+		return mi;
 	}
 
 	@Override
 	public void removeCartItem(long userId, long menuItemId) {
 		// TODO Auto-generated method stub
+		List<MenuItem> mi=null;
+		double tot=0;
+		for(Map.Entry<Long,Cart> mm:userCarts.entrySet())
+		{
+			if(mm.getKey()==userId)
+			{
+				mi=mm.getValue().getMenuItemList();
+				tot=mm.getValue().getTotal();
+			}
+		}
+		int i=0;
+		int n=0;
+		for(MenuItem menuitem:mi)
+		{
+			if(menuitem.getId()==menuItemId)
+				n=i;
+			i++;
+		}
+		mi.remove(n);
+		userCarts.put(userId,new Cart(mi,tot));
+		
+		
 		
 	}
 	
