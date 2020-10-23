@@ -1,5 +1,6 @@
 package com.cognizant.truyum.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.cognizant.truyum.model.MenuItem;
@@ -26,6 +27,16 @@ public class MenuItemDaoCollectionImpl implements MenuItemDao {
 	@Override
 	public List<MenuItem> getMenuItemListAdmin() {
 		// TODO Auto-generated method stub
+		List<MenuItem> lst =new ArrayList<MenuItem>();
+		for(MenuItem mm:menuItemList)
+		{	 
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+			Date date = new Date();
+			if(mm.getDateOfLaunch().compareTo(date)==0)
+			{
+				//if()
+			}
+		}
 		return menuItemList;
 	}
 
